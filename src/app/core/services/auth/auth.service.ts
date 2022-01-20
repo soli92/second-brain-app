@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginModel } from '../../models/login/login.models';
 
-import * as dbJson from '../../../../assets/db.json';
+import dbJson from '../../../../assets/db.json';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,8 @@ export class AuthService {
           )
         }
     )
+
+    return authentication;
   }
 
   private parseUsername() {}

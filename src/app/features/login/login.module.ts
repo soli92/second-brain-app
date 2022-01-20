@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './component/header.component';
+import { LoginComponent } from './component/login.component';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    LoginComponent
   ],
   imports: [
     CommonModule,
     SharedModule
-  ],
-  exports: [
-    HeaderComponent
   ]
 })
-export class HeaderModule { }
+export class LoginModule { }
