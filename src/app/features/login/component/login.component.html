@@ -6,15 +6,17 @@
                 <mat-label>Username</mat-label>
                 <input matInput [formControl]="getControl('username')">
             </mat-form-field>
+            <small class="error-text" *ngIf="checkFormError('username', 'required')">This field is required</small>
         </div>
         <div class="login-password-container">
             <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
                 <input matInput [formControl]="getControl('password')">
             </mat-form-field>
+            <small class="error-text" *ngIf="checkFormError('password', 'required')">This field is required</small>
         </div>
 
-        <div *ngFor="let accountControlGroup of getAccountArrayControl().controls">
+        <!-- <div *ngFor="let accountControlGroup of getAccountArrayControl().controls">
             <mat-form-field appearance="fill">
                 <mat-label>Account ID</mat-label>
                 <input matInput [formControl]="accountControlGroup.controls['accountId']">
@@ -23,10 +25,10 @@
                 <mat-label>Username</mat-label>
                 <input matInput [formControl]="accountControlGroup.controls['username']">
             </mat-form-field>
-        </div>
+        </div> -->
 
         <div class="login-footer-container">
-            <button mat-raised-button (click)="login()">Login</button>
+            <button mat-raised-button [disabled]="loginFormGroup.invalid" (click)="login()">Login</button>
         </div>
     </form>
 </div>

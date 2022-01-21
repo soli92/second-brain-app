@@ -10,12 +10,26 @@
         justify-content: center;
     }
 
+    .login-username-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
     .login-password-container {
         display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-        mat-form-field {
-            color: red !important;
-        }
+    .login-footer-container {
+        display: flex;
+        justify-content: center;
+    }
 
+    .error-text {
+        color: red;
     }
 }

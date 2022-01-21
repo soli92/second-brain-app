@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class LoginComponent implements OnInit {
 
   public loginFormGroup = new FormGroup({});
+  public accountIdError;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -41,6 +42,13 @@ export class LoginComponent implements OnInit {
     return this.loginFormGroup.get('accounts') as FormArray;
   }
 
+  public checkFormError(path: string, errorCode: string) {
+    return this.loginFormGroup.get(path).invalid && 
+           this.loginFormGroup.get(path).errors &&
+           (this.loginFormGroup.get(path).dirty || this.loginFormGroup.get(path).touched) &&
+           this.loginFormGroup.get(path).hasError(errorCode);
+  }
+
   private initControl(value: any = null) {
     const formState = {
       value: value,
@@ -53,11 +61,25 @@ export class LoginComponent implements OnInit {
     return control;
   }
 
+  private subscribeToFormStatusChanges() {
+    this.loginFormGroup
+      .statusChanges
+      .subscribe(
+        (res) => {
+          console.log('RES', res);
+        }
+      )
+  }
+
   private initLoginForm() {
     this.loginFormGroup = this.formBuilder.group(
      {
         username: this.initControl(), 
         password: this.initControl(),
+        obj: this.formBuilder.group({
+          key1: this.formBuilder.control(''),
+          key2: this.formBuilder.control('')
+        }),
         accounts: this.formBuilder.array([
           this.formBuilder.group({ 
             accountId: this.initControl(39994994),
@@ -73,6 +95,8 @@ export class LoginComponent implements OnInit {
 
      }
     )
+    this.subscribeToFormStatusChanges();
+  
   }
 
   //
