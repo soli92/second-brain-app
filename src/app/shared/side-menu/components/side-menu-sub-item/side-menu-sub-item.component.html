@@ -1,0 +1,4 @@
+<div class="m2b-side-menu__sub-item" (click)="navigateTo()">
+    <mat-icon *ngIf="item?.matIcon" [inline]="true">{{item.matIcon}}</mat-icon>
+    <div class="m2b-side-menu__sub-item__name">{{item?.nameI18n | translate | titlecase}}</div>
+</div>

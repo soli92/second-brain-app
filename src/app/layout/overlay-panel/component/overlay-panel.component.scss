@@ -1,0 +1,19 @@
+@import '../../../../styles/color-palette.scss';
+
+:host {
+    .m2b-overlay-panel {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-color: map-get($color-palette, primary-dark);
+        //opacity: 0.9;
+        display: none;
+        z-index: 9;
+
+        &.open {
+            display: block;
+        }
+    }
+}

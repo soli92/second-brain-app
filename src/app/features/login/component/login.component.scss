@@ -5,26 +5,26 @@
         padding: 1rem;
     }
 
-    .login-form-header {
+    .login-form__header {
         display: flex;
         justify-content: center;
     }
 
-    .login-username-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .login-password-container {
+    .login-form__username-container {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .login-footer-container {
+    .login-form__password-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-form__footer-container {
         display: flex;
         justify-content: center;
     }

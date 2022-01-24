@@ -1,27 +1,27 @@
-import { Injectable, TemplateRef, Type } from '@angular/core';
+import { Injectable, Type } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-//import { OverlayPanelConfigModel } from '../models/overlay-panel.model';
+import { OverlayPanelConfigModel } from 'src/app/layout/overlay-panel/models/overlay-panel.models';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class OverlayPanelService {
-
   public panelSubject$ = new BehaviorSubject<any>(null);
 
   constructor() { }
 
   public open(component: Type<any>) {
-    const config: any = {
+    const config: OverlayPanelConfigModel = {
       component,
       isOpen: true
     }
-    console.log('OVERLAY PANEL OPENING', config);
+
     this.panelSubject$.next(config);
   }
 
   public close() {
-    const closingConfig: any = {
+    const closingConfig: OverlayPanelConfigModel = {
       component: null,
       isOpen: false
     }

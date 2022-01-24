@@ -1,13 +1,9 @@
-<mat-toolbar class="header-toolbar">
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu</mat-icon>
-    </button>
+<mat-toolbar class="header__toolbar">
+  <m2b-button [buttonStyle]="'secondary'" [buttonType]="'fab-plain'" [buttonMatIcon]="'menu'" (onButtonClicked)="openNavMenu()"></m2b-button>
     <span>Soli Second Brain</span>
     <span class="example-spacer"></span>
     <!-- <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       <mat-icon>favorite</mat-icon>
     </button> -->
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon (click)="navigateToLogin()">account_circle</mat-icon>
-    </button>
+    <m2b-button [buttonStyle]="'secondary'" [buttonType]="'fab-plain'" [buttonMatIcon]="'account_circle'" (onButtonClicked)="navigateToLogin()"></m2b-button>
   </mat-toolbar>

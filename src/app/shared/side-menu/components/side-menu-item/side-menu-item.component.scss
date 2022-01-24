@@ -1,0 +1,69 @@
+@import '../../../../../../styles/color-palette.scss';
+
+:host {
+    .m2b-side-menu__single-item {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 0.5rem;
+        background-color: map-get($color-palette, secondary-light);
+        color: map-get($color-palette, text-on-secondary);
+
+        &.direction--right {
+            justify-content: flex-start;
+        }
+
+        &.direction--left {
+            justify-content: flex-end;
+            padding-inline: 1rem;
+        }
+
+        &.direction--top, &.direction--bottom {
+            justify-content: center;
+        }
+    }
+
+    .m2b-side-menu__single-item__name {
+        margin-left: 0.5rem;
+    }
+
+    .m2b-side-menu__item__container {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .m2b-side-menu__item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.5rem;
+    }
+    .m2b-side-menu__item__name {
+        //color: map-get($colors-palette, white);
+    }
+
+    .m2b-side-menu__item__arrow {
+        color: map-get($color-palette, secondary);
+
+        &.flipped {
+            transform: rotate(90deg);
+        }
+    }
+
+    .m2b-side-menu__sub-items__container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-color: map-get($color-palette, secondary-light);
+        color: map-get($color-palette, text-on-secondary);
+    }
+
+    .selected {
+        border-left: 1.5px solid map-get($colors-palette, accent);
+        background-color: map-get($color-palette, secondary-dark);
+        color: map-get($color-palette, text-on-secondary);
+    }
+}

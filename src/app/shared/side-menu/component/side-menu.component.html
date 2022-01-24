@@ -1,0 +1,11 @@
+<div class="m2b-side-menu__container direction--{{config.direction ? config.direction : 'right'}}">
+    <ng-container *ngIf="config.titlei18n">
+        <div class="m2b-side-menu__title">{{config.titlei18n | translate | titlecase}}</div>
+    </ng-container>
+    <ng-template sidemenuHeaderHost *ngIf="config.headerMenuContent"></ng-template>
+    
+    <app-sidemenu-item [direction]="config?.direction" *ngFor="let item of config.items" [item]="item" (itemClicked)="onItemClicked($event)"></app-sidemenu-item>
+    <div class="m2b-close-button__container direction--{{config.direction ? config.direction : 'right'}}">
+        <mat-icon (click)="close()">close</mat-icon>
+    </div>
+</div>

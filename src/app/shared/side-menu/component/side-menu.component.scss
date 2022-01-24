@@ -1,0 +1,71 @@
+@import '../../../../styles/color-palette.scss';
+@import '../../../../styles/variables.scss';
+:host {
+    .m2b-side-menu__container {
+        display: flex;
+        flex-direction: column;
+        width: 85%;
+        background-color: map-get($color-palette, secondary);
+        opacity: 1;
+        height: 100%;
+        z-index: 10;
+        overflow: auto;
+        position: absolute;
+
+        &.direction--right {
+            left: 0;
+            max-width: $sidemenu-max-width;
+        }
+
+        &.direction--left {
+            right: 0;
+            max-width: $sidemenu-max-width;
+        }
+
+        &.direction--top {
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+        }
+
+        &.direction--bottom {
+            top: 0;
+            width: 100%;
+            height: 50%;
+        }
+    }
+
+    .m2b-side-menu__title {
+        display: flex;
+        padding: 1rem;
+        font-size: large;
+        justify-content: flex-start;
+        color: map-get($color-palette, text-on-secondary);
+    }
+
+    .m2b-side-menu__header-component__container {
+        //display: flex;
+        width: 100%;
+    }
+
+    .m2b-close-button__container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        width: 100%;
+        color: map-get($colors-palette, white);
+
+        &.direction--right {
+            justify-content: flex-end;
+        }
+
+        &.direction--left {
+            justify-content: flex-start;
+        }
+    }
+
+    .m2b-close-button { 
+        color: map-get($colors-palette, white);
+        background-color: map-get($grey-colors-palette, darker);
+    }
+}

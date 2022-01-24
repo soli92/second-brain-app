@@ -1,0 +1,19 @@
+@import '../../../../../styles/color-palette.scss';
+
+:host {
+    width: 100%;
+    .m2b-side-menu__sub-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-content: center;
+        background-color: map-get($color-palette, secondary-dark);
+        color: map-get($color-palette, text-on-secondary);
+        margin-left: 1rem;
+        padding: 0.5rem;
+    }
+
+    .m2b-side-menu__sub-item__name {
+        margin-left: 0.5rem;
+    }
+}

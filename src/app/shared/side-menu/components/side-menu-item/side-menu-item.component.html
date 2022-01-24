@@ -1,0 +1,23 @@
+<div class="m2b-side-menu__item__container">
+    <ng-container *ngIf="item.subItems; else singleItem">
+        <div class="m2b-side-menu__item" (click)="toggleItem()">
+            <div class="m2b-side-menu__item__name">{{item.nameI18n | translate | titlecase}}</div>
+            <div class="m2b-side-menu__item__arrow" [ngClass]="item.isActive ? 'flipped' : ''">
+                <mat-icon>arrow_forward_ios</mat-icon>
+            </div>
+        </div>
+        <div class="m2b-side-menu__sub-items__container" *ngIf="item.isActive">
+            <app-sidemenu-sub-item *ngFor="let subItem of item.subItems" [item]="subItem"></app-sidemenu-sub-item>
+        </div>
+    </ng-container>
+    
+    <ng-template #singleItem>
+        <div class="m2b-side-menu__single-item direction--{{direction ? direction : 'right'}}" 
+            [ngClass]="item?.selected ? 'selected' : null"
+            (click)="executeItemClickFn()">
+            <mat-icon *ngIf="item?.matIcon" [inline]="true">{{item.matIcon}}</mat-icon>
+            <div class="m2b-side-menu__single-item__name">{{item.nameI18n | translate | titlecase}}</div>
+        </div>
+    </ng-template>
+    
+</div>

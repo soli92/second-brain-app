@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { AuthService } from '../core/services/auth/auth.service';
 
 @Component({
-  selector: 'app-root',
+  selector: 'm2b-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })

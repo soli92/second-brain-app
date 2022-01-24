@@ -34,6 +34,7 @@ $my-second-brain-theme: mat.define-light-theme((
 @include mat.all-component-themes($my-second-brain-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@import '../../second-brain-app/src/styles/color-palette.scss';
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

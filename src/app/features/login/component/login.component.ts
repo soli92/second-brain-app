@@ -4,7 +4,7 @@ import { LoginModel } from 'src/app/core/models/login/login.models';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
-  selector: 'app-login',
+  selector: 'm2b-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })

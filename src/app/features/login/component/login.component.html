@@ -1,14 +1,14 @@
 <div class="login-page-container">
     <form [formGroup]="loginFormGroup">
-        <h4 class="login-form-header">Login</h4>
-        <div class="login-username-container">
+        <h4 class="login-form__header">Login</h4>
+        <div class="login-form__username-container">
             <mat-form-field appearance="fill">
                 <mat-label>Username</mat-label>
                 <input matInput [formControl]="getControl('username')">
             </mat-form-field>
             <small class="error-text" *ngIf="checkFormError('username', 'required')">This field is required</small>
         </div>
-        <div class="login-password-container">
+        <div class="login-form__password-container">
             <mat-form-field appearance="fill">
                 <mat-label>Password</mat-label>
                 <input matInput [formControl]="getControl('password')">
@@ -27,8 +27,9 @@
             </mat-form-field>
         </div> -->
 
-        <div class="login-footer-container">
-            <button mat-raised-button [disabled]="loginFormGroup.invalid" (click)="login()">Login</button>
+        <div class="login-form__footer-container">
+            <!-- <button mat-raised-button [disabled]="loginFormGroup.invalid" (click)="login()">Login</button> -->
+            <m2b-button [buttonStyle]="'secondary'" [buttonType]="'normal-raised'" [buttonLabel]="'Login'" [disabled]="loginFormGroup.invalid" (onButtonClicked)="login()"></m2b-button>
         </div>
     </form>
 </div>
