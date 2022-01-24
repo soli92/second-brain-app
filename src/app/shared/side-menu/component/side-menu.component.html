@@ -4,7 +4,7 @@
     </ng-container>
     <ng-template sidemenuHeaderHost *ngIf="config.headerMenuContent"></ng-template>
     
-    <app-sidemenu-item [direction]="config?.direction" *ngFor="let item of config.items" [item]="item" (itemClicked)="onItemClicked($event)"></app-sidemenu-item>
+    <m2b-side-menu-item [direction]="config?.direction" *ngFor="let item of config.items" [item]="item" (itemClicked)="onItemClicked($event)"></m2b-side-menu-item>
     <div class="m2b-close-button__container direction--{{config.direction ? config.direction : 'right'}}">
         <mat-icon (click)="close()">close</mat-icon>
     </div>

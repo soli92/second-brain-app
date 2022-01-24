@@ -4,7 +4,7 @@
     .m2b-side-menu__container {
         display: flex;
         flex-direction: column;
-        width: 85%;
+        width: 23%;
         background-color: map-get($color-palette, secondary);
         opacity: 1;
         height: 100%;
@@ -53,7 +53,7 @@
         flex-direction: row;
         align-items: center;
         width: 100%;
-        color: map-get($colors-palette, white);
+        color: map-get($color-palette, secondary-light);
 
         &.direction--right {
             justify-content: flex-end;
@@ -65,7 +65,7 @@
     }
 
     .m2b-close-button { 
-        color: map-get($colors-palette, white);
-        background-color: map-get($grey-colors-palette, darker);
+        color: map-get($color-palette, secondary-light);
+        background-color: map-get($color-palette, secondary-light);
     }
 }

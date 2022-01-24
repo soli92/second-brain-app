@@ -5,11 +5,13 @@ export const navSideMenuConfig: SidemenuConfigModel = {
     items: [
         {
             nameI18n: 'Personal Projects',
-            isActive: false
+            isActive: false,
+            matIcon: 'verified'
         },
         {
             nameI18n: 'About Me',
-            isActive: false
+            isActive: false,
+            matIcon: 'pregnant_woman'
         }
     ]
 }

@@ -7,7 +7,7 @@
             </div>
         </div>
         <div class="m2b-side-menu__sub-items__container" *ngIf="item.isActive">
-            <app-sidemenu-sub-item *ngFor="let subItem of item.subItems" [item]="subItem"></app-sidemenu-sub-item>
+            <m2b-side-menu-sub-item *ngFor="let subItem of item.subItems" [item]="subItem"></m2b-side-menu-sub-item>
         </div>
     </ng-container>
     

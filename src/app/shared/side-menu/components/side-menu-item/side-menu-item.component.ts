@@ -10,10 +10,11 @@ export class SideMenuItemComponent implements OnInit {
   @Input() item: SidemenuItemModel;
   @Input() direction: string;
 
-  @Output() itemClicked = new EventEmitter()
+  @Output() itemClicked = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+    console.log('ITEM', this.item);
   }
 
   public toggleItem() {

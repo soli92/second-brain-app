@@ -7,8 +7,8 @@ import { ButtonStyle, ButtonType } from '../enum/button.enums';
   styleUrls: ['./button.component.scss']
 })
 export class ButtonComponent implements OnInit {
-  @Input() buttonType: ButtonType;
-  @Input() buttonStyle: ButtonStyle;
+  @Input() buttonType: ButtonType | string;
+  @Input() buttonStyle: ButtonStyle | string;
   @Input() buttonLabel?: string;
   @Input() buttonMatIcon?: string;
 

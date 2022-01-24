@@ -13,6 +13,7 @@ export class NavigationSideMenuComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log('CONFIG', this.config);
   }
 
   public execItemClickFn(fnObj: SidemenuItemOnClickFnModel) {

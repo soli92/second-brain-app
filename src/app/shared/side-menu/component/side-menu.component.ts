@@ -23,6 +23,7 @@ export class SideMenuComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('CONFIG INPUT SIDE-MENU', this.config);
   }
 
   ngAfterViewInit() {

@@ -1,4 +1,4 @@
-@import '../../../../../../styles/color-palette.scss';
+@import '../../../../../styles/color-palette.scss';
 
 :host {
     .m2b-side-menu__single-item {
@@ -62,7 +62,7 @@
     }
 
     .selected {
-        border-left: 1.5px solid map-get($colors-palette, accent);
+        border-left: 1.5px solid map-get($color-palette, accent);
         background-color: map-get($color-palette, secondary-dark);
         color: map-get($color-palette, text-on-secondary);
     }
