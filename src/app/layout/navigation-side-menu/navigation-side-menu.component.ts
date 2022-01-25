@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SidemenuConfigModel, SidemenuItemOnClickFnModel } from 'src/app/shared/side-menu/models/side-menu.models';
 import { navSideMenuConfig } from './config/navigation-side-menu.config';
 
@@ -10,7 +11,9 @@ import { navSideMenuConfig } from './config/navigation-side-menu.config';
 export class NavigationSideMenuComponent implements OnInit {
   public config: SidemenuConfigModel = navSideMenuConfig;
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit(): void {
     console.log('CONFIG', this.config);
@@ -18,6 +21,10 @@ export class NavigationSideMenuComponent implements OnInit {
 
   public execItemClickFn(fnObj: SidemenuItemOnClickFnModel) {
     this[fnObj.name]();
+  }
+
+  private navigateTo() {
+    this.router.navigate(['jokes'])
   }
 
 }

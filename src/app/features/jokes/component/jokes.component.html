@@ -1,0 +1,9 @@
+<div class="jokes-section__container">
+    <h2>Welcome to the Chuck Norris joke section </h2>
+    <div class="jokes-section__content">
+        <div class="jokes-section__button__container">
+            <m2b-button [buttonType]="'normal-raised'" [buttonStyle]="'primary'" [buttonLabel]="'Get Jokes'" (onButtonClicked)="getJokes()"></m2b-button>
+        </div>
+        <div class="jokes-section__jokes__container">{{resJokes}}</div>
+    </div>
+</div>

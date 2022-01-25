@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { LoginModel } from '../../models/login/login.models';
 
 import dbJson from '../../../../assets/db.json';
+import { LoginModel } from '../models/login/login.models';
 
 @Injectable({
   providedIn: 'root'

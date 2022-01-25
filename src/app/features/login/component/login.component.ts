@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LoginModel } from 'src/app/core/models/login/login.models';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
-
+import { LoginModel } from 'src/app/core/auth/models/login/login.models';
+import { AuthService } from 'src/app/core/auth/service/auth.service';
 @Component({
   selector: 'm2b-login',
   templateUrl: './login.component.html',
@@ -64,11 +63,11 @@ export class LoginComponent implements OnInit {
   private subscribeToFormStatusChanges() {
     this.loginFormGroup
       .statusChanges
-      .subscribe(
-        (res) => {
-          console.log('RES', res);
-        }
-      )
+      .subscribe({ 
+        next: (res)=> console.log(res),
+        error: (error) => console.error(error),
+        complete: () => console.log('COMPLETE')
+      })
   }
 
   private initLoginForm() {

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { JokesComponent } from '../features/jokes/component/jokes.component';
 import { LoginComponent } from '../features/login/component/login.component';
 
 const routes: Routes = [
@@ -11,6 +12,11 @@ const routes: Routes = [
     path: 'login',
     component: LoginComponent,
     loadChildren: () => import('../features/login/login.module').then( m => m.LoginModule)
+  },
+  {
+    path: 'jokes',
+    component: JokesComponent,
+    loadChildren: () => import('../features/jokes/jokes.module').then( m => m.JokesModule)
   }
 ];
 

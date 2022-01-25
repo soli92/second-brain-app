@@ -12,6 +12,15 @@ export const navSideMenuConfig: SidemenuConfigModel = {
             nameI18n: 'About Me',
             isActive: false,
             matIcon: 'pregnant_woman'
+        },
+        {
+            nameI18n: 'About Me',
+            isActive: false,
+            matIcon: 'pregnant_woman',
+            onClickFn: {
+                name: 'navigateTo',
+                args: ['jokes']
+            }
         }
     ]
 }

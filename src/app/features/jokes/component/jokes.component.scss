@@ -1,0 +1,18 @@
+:host {
+    .jokes-section__container, .jokes-section__content {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .jokes-section__button__container {
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .jokes-section__jokes__container {
+        display: flex;
+        border: 1px;
+    }
+}

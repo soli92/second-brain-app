@@ -4,7 +4,6 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ApiPrefixInterceptor } from './http/interceptors/api-prefix.interceptor';
 import { ErrorHandlerInterceptor } from './http/interceptors/error-handler.interceptor';
 import { CacheInterceptor } from './http/interceptors/cache.interceptor';
-import { HttpService } from './http/services/http.service';
 
 export const httpInterceptors = [
   ApiPrefixInterceptor,
@@ -16,17 +15,17 @@ export const httpInterceptors = [
   declarations: [],
   imports: [
     CommonModule,
-    HttpClientModule
+    
   ],
   providers: [
-    ...httpInterceptors,
-    HttpService,
-    {
-      provide: HttpClient,
-      useClass: HttpService,
-    },
+    //...httpInterceptors,
+    // HttpService,
+    // {
+    //   provide: HttpClient,
+    //   useClass: HttpService,
+    // },
+    //HttpClient
   ],
-  exports: [
-  ]
+  exports: []
 })
 export class CoreModule { }
