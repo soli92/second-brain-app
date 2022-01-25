@@ -6,6 +6,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 
 
@@ -17,6 +18,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatInputModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatToolbarModule
   ],
   exports: [
@@ -24,6 +26,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     MatIconModule,
     MatInputModule,
     MatSidenavModule,
+    MatSnackBarModule,
     MatToolbarModule
   ]
 })

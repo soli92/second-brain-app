@@ -1,8 +1,12 @@
+@import '../../../../styles/color-palette.scss';
+
 :host {
     .jokes-section__container, .jokes-section__content {
         display: flex;
         flex-direction: column;
         padding: 1rem;
+        justify-content: center;
+        align-items: center;
     }
 
     .jokes-section__button__container {
@@ -13,6 +17,14 @@
 
     .jokes-section__jokes__container {
         display: flex;
-        border: 1px;
+        border: solid 1px map-get($color-palette, secondary);
+        background-color: map-get($color-palette, secondary-light);
+        color: map-get($color-palette, text-on-secondary);
+        margin-top: 2rem;
+        padding: 1rem;
+        justify-content: center;
+        min-height: 100px;
+        width: 80%;
+        min-width: 200px;
     }
 }

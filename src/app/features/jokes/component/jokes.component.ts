@@ -19,7 +19,10 @@ export class JokesComponent implements OnInit {
     this.jokesService
     .getRandomJokes()
     .subscribe(
-      (res) => console.log('RES', res)
+      (res) => {
+        console.log('RES', res);
+        this.resJokes = res['value'];
+      }
     )
   }
 

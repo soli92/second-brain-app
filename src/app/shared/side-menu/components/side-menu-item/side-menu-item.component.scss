@@ -32,6 +32,11 @@
         flex-direction: column;
         width: 100%;
         justify-content: center;
+        :hover {
+            cursor: pointer;
+            background-color: map-get($color-palette, primary-light);
+            color: map-get($color-palette, text-on-primary);
+        }
     }
 
     .m2b-side-menu__item {
