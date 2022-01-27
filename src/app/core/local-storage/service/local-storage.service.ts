@@ -15,7 +15,7 @@ export class LocalStorageService {
   }
 
   public getData(key: string) {
-    this.storage.get(key);
+    return this.storage.get(key);
   }
 
   public removeData(key: string) {

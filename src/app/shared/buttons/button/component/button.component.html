@@ -9,10 +9,16 @@
                 buttonMatIcon : 'add'}}</span></button>
 
         <button *ngSwitchCase="'normal-plain'" (click)="buttonClick($event)" type="button" [ngClass]="{disabled}"
-            class="m2b-button m2b-button--plain">{{buttonLabel ? buttonLabel : 'Press'}}</button>
+            class="m2b-button m2b-button--plain">
+            <span *ngIf="buttonMatIcon" class='material-icons m2b-fab__icon'>{{buttonMatIcon }}</span>
+            {{buttonLabel ? buttonLabel : 'Press'}}
+        </button>
 
         <button *ngSwitchCase="'normal-raised'" (click)="buttonClick($event)" type="button" [ngClass]="{disabled}"
-            class="m2b-button m2b-button--raised">{{buttonLabel ? buttonLabel : 'Press'}}</button>
+            class="m2b-button m2b-button--raised">
+            <span *ngIf="buttonMatIcon" class='material-icons m2b-fab__icon'>{{buttonMatIcon}}</span>
+            {{buttonLabel ? buttonLabel : 'Press'}}
+        </button>
 
         <button *ngSwitchDefault [ngClass]="{disabled}" (click)="buttonClick($event)" class="m2b-fab material-icons"
             aria-label="Add"><span class="m2b-fab__icon">{{buttonMatIcon ?

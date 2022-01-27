@@ -1,7 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { LoginModel } from 'src/app/core/auth/models/login/login.models';
 import { AuthService } from 'src/app/core/auth/service/auth.service';
+import { userDataKey } from 'src/app/core/local-storage/constants/storage-keys.constants';
+import { LocalStorageService } from 'src/app/core/local-storage/service/local-storage.service';
 @Component({
   selector: 'm2b-login',
   templateUrl: './login.component.html',
@@ -14,7 +18,10 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private authService: AuthService
+    private authService: AuthService,
+    private localStorageService: LocalStorageService,
+    private router: Router,
+    private socialAuthService: SocialAuthService,
   ) { }
 
   ngOnInit(): void {
@@ -35,6 +42,10 @@ export class LoginComponent implements OnInit {
         }
       )
     }
+  }
+
+  public googleLogin() {
+    this.authService.loginWithGoogle();
   }
 
   public getAccountArrayControl() {

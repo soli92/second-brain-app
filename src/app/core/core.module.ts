@@ -8,6 +8,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
 import { HttpService } from './http/services/http.service';
+import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
 
 export const httpInterceptors = [
   ApiPrefixInterceptor,
@@ -28,6 +29,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
     CommonModule,
     HttpClientModule,
+    SocialLoginModule,
     TranslateModule.forRoot({
       defaultLanguage: 'en',
       loader: {
@@ -44,6 +46,18 @@ export function HttpLoaderFactory(http: HttpClient) {
     {
       provide: HttpClient,
       useClass: HttpService,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: true, //keeps the user signed in
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(environment.googleAuth.clientId) // your client id
+          }
+        ]
+      }
     }
   ],
   exports: []

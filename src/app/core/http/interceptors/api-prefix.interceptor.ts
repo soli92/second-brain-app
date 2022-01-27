@@ -15,8 +15,25 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
     // let newRequest;
+    console.log('INTERCEPETED REQUEST', request);
+    if (request.url.indexOf('jokes') !== -1) {
+      
+      const headers = request.headers
+      .set("accept", "application/json")
+      .set("x-rapidapi-host", "matchilling-chuck-norris-jokes-v1.p.rapidapi.com")
+      .set("x-rapidapi-key", environment.chuckNorrisJokesApiKey)
+
+      request = request.clone(
+        { 
+          url: environment.chuckNorrisJokesApiPrefix + request.url,
+          headers: headers
+        }
+      );
+    }
+    
     if (request.url.indexOf('i18n') === -1) {
       if (!/^(http|https):/i.test(request.url)) {
+        console.log('INTERCEPETED REQUEST', request);
         // if (request.url.indexOf('CmsService') > -1) {
         //   request = request.clone({url: environment.cmsApiUrl + request.url});
         // } else if (request.url.indexOf('HelpService') > -1 || request.url.indexOf('DataServices') > -1) {
@@ -29,6 +46,7 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
 
       }
     }
+    console.log('INTERCEPTED REQUEST TRANSFORMED', request);
 
     return next.handle(request);
   }

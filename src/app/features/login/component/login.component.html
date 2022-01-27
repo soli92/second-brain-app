@@ -30,6 +30,7 @@
         <div class="login-form__footer-container">
             <!-- <button mat-raised-button [disabled]="loginFormGroup.invalid" (click)="login()">Login</button> -->
             <m2b-button [buttonStyle]="'secondary'" [buttonType]="'normal-raised'" [buttonLabel]="'Login'" [disabled]="loginFormGroup.invalid" (onButtonClicked)="login()"></m2b-button>
+            <m2b-button [buttonStyle]="'primary'" [buttonType]="'normal-raised'" [buttonMatIcon]="'local_fire_department'" [buttonLabel]="'Google'" (onButtonClicked)="googleLogin()"></m2b-button>
         </div>
     </form>
 </div>

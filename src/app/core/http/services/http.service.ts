@@ -77,13 +77,14 @@ export class HttpService extends HttpClient {
     private injector: Injector,
     @Optional()
     @Inject(HTTP_DYNAMIC_INTERCEPTORS)
-    private interceptors: HttpInterceptor[] = []
+    private interceptors: HttpInterceptor[] = null
   ) {
     super(httpHandler);
 
     if (!this.interceptors) {
       // Configure default interceptors that can be disabled here
       this.interceptors = [
+        this.injector.get(ApiPrefixInterceptor),
         this.injector.get(ErrorHandlerInterceptor)
       ];
     }

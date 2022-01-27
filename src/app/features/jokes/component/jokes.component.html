@@ -1,6 +1,15 @@
 <div class="jokes-section__container">
-    <h2>Welcome to the Chuck Norris joke section </h2>
+    <h2>Welcome to the Chuck Norris jokes section </h2>
     <div class="jokes-section__content">
+        <mat-form-field appearance="fill">
+            <mat-label>Jokes categories</mat-label>
+            <mat-select [formControl]="jokesCategory">
+              <mat-select-trigger>
+                {{jokesCategory.value ? jokesCategory.value : ''}}
+              </mat-select-trigger>
+              <mat-option *ngFor="let category of jokesCategories" [value]="category">{{category}}</mat-option>
+            </mat-select>
+          </mat-form-field>
         <div class="jokes-section__button__container">
             <m2b-button [buttonType]="'normal-raised'" [buttonStyle]="'primary'" [buttonLabel]="'Get Jokes'" (onButtonClicked)="getJokes()"></m2b-button>
         </div>

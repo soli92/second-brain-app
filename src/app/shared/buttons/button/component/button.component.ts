@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ButtonStyle, ButtonType } from '../enum/button.enums';
+import { ButtonIconModel } from '../models/button.models';
 
 @Component({
   selector: 'm2b-button',
@@ -10,7 +11,7 @@ export class ButtonComponent implements OnInit {
   @Input() buttonType: ButtonType | string;
   @Input() buttonStyle: ButtonStyle | string;
   @Input() buttonLabel?: string;
-  @Input() buttonMatIcon?: string;
+  @Input() buttonMatIcon?: string | ButtonIconModel;
 
   @Input() disabled: boolean;
 
