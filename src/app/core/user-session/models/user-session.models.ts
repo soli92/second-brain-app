@@ -2,7 +2,7 @@ import { SocialUser } from "angularx-social-login";
 
 export interface UserData extends SocialUser { };
 
-export interface AuthToken {
+export interface GoogleAuthToken {
     access_token: string,
     expires_at: number,
     expires_in: number,
@@ -13,4 +13,35 @@ export interface AuthToken {
     scope: string,
     session_state: any,
     token_type: string
+}
+
+export interface CognitoAuthToken {
+    idToken: string;
+    accessToken: string;
+    expiresOn: any
+}
+
+export class AuthToken {
+    public accessToken: string;
+    public expiresAt: number;
+    public expiresIn: number;
+    public idToken: string;
+
+    constructor(
+        googleAuthToken?: GoogleAuthToken,
+        cognitoAuthToken?: CognitoAuthToken
+    ) {
+        if (googleAuthToken) {
+            this.idToken = googleAuthToken.id_token;
+            this.accessToken = googleAuthToken.access_token;
+            this.expiresAt = googleAuthToken.expires_at;
+            this.expiresIn = googleAuthToken.expires_in;
+        }
+
+        if (cognitoAuthToken) {
+            this.accessToken = cognitoAuthToken.accessToken;
+            this.idToken = cognitoAuthToken.idToken;
+            this.expiresAt = cognitoAuthToken.expiresOn
+        }
+    }
 }

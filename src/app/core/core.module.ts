@@ -9,6 +9,12 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { environment } from 'src/environments/environment';
 import { HttpService } from './http/services/http.service';
 import { GoogleLoginProvider, SocialLoginModule } from 'angularx-social-login';
+import { AmplifyAngularModule, AmplifyModules, AmplifyService } from 'aws-amplify-angular';
+import Auth from '@aws-amplify/auth';
+import { Interactions } from '@aws-amplify/interactions';
+import Storage from '@aws-amplify/storage';
+import { Oauth2Guard } from './auth/guards/oauth2.guard';
+import { AuthGuardService } from './auth/guards/auth-guard.service';
 
 export const httpInterceptors = [
   ApiPrefixInterceptor,
@@ -27,6 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [],
   imports: [
+    //AmplifyAngularModule,
     CommonModule,
     HttpClientModule,
     SocialLoginModule,
@@ -42,6 +49,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   providers: [
     ...httpInterceptors,
+    Oauth2Guard,
+    AuthGuardService,
     HttpService,
     {
       provide: HttpClient,
@@ -58,6 +67,10 @@ export function HttpLoaderFactory(http: HttpClient) {
           }
         ]
       }
+    },
+    {
+      provide: AmplifyService,
+			useFactory: () => AmplifyModules({ Auth, Storage, Interactions })
     }
   ],
   exports: []

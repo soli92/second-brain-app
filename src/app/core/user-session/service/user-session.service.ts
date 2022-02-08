@@ -14,6 +14,7 @@ export class UserSessionService {
 
   public setSessionData(res) {
     const userData: UserData = res;
+    console.log('RES',res);
     this.localStorageService.setData(userDataKey, res);
     this.setAuthToken(userData);
   }
@@ -28,7 +29,7 @@ export class UserSessionService {
 
   private setAuthToken(userData: UserData): void {
     if (userData && userData.response) {
-      const authToken: AuthToken = userData.response;
+      const authToken: AuthToken = new AuthToken(userData.response);
       this.localStorageService.setData(authTokenKey, authToken);
     }
   }

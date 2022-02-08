@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../core/auth/service/auth.service';
+import { AuthService } from '../core/auth/services/auth.service';
+
 
 @Component({
   selector: 'm2b-root',

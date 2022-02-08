@@ -20,6 +20,12 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "uuid",
+              "buffer",
+              "cripto-js",
+              "lodash"
+            ],
             "outputPath": "dist/my-second-brain",
             "index": "src/index.html",
             "main": "src/main.ts",

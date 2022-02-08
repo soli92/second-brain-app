@@ -11,6 +11,19 @@ export const environment = {
   googleAuth: {
     clientId: '786422237616-qkqo0m488fgph1boaknkth09ms3telo0.apps.googleusercontent.com',
     clientSecret: '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'
+  },
+  cognitoAuth: {
+    userPoolId: 'eu-west-1_1aTbSXALN',
+		userPoolClientId: '7og6bv7g2vjqro7hmhdd3c5j1f',
+    identityPoolId: 'eu-west-1:d8745d4e-4c18-4524-84e6-00cd7b635b30',
+		region: 'eu-west-1',
+		oauth: {
+			redirectSignIn: 'http://localhost:4200/home',
+			redirectSignOut: 'http://localhost:4200/home',
+			domain: 'nerdy-app.auth.eu-west-1.amazoncognito.com',
+			responseType: 'token',
+			scope:  ['openid', 'profile', 'email'],
+		},
   }
 };
 

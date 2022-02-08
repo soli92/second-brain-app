@@ -3,7 +3,8 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@ang
 import { Router } from '@angular/router';
 import { GoogleLoginProvider, SocialAuthService, SocialUser } from 'angularx-social-login';
 import { LoginModel } from 'src/app/core/auth/models/login/login.models';
-import { AuthService } from 'src/app/core/auth/service/auth.service';
+import { AuthService } from 'src/app/core/auth/services/auth.service';
+
 import { userDataKey } from 'src/app/core/local-storage/constants/storage-keys.constants';
 import { LocalStorageService } from 'src/app/core/local-storage/service/local-storage.service';
 @Component({
@@ -36,11 +37,7 @@ export class LoginComponent implements OnInit {
     if(this.loginFormGroup.valid) {
       const loginReq: LoginModel = this.loginFormGroup.getRawValue();
       console.log('LOGIN REQUEST', loginReq);
-      this.authService.login(loginReq).subscribe(
-        res => {
-          console.log('RES', res);
-        }
-      )
+      this.authService.loginWithCognito(loginReq);
     }
   }
 
