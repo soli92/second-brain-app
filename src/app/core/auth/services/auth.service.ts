@@ -34,6 +34,10 @@ export class AuthService {
     this.cognitoAuthService.federatedLogin();
   }
 
+  public logout() {
+    this.cognitoAuthService.logout();
+  }
+
   public loginWithCognito(requestModel: LoginModel) {
     this.cognitoAuthService.login(requestModel);
   }

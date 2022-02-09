@@ -143,7 +143,7 @@ export class CognitoAuthService implements AuthProviderInterface {
 		const idTokenDecoded = userSession.getIdToken().decodePayload();
 		const email: string = idTokenDecoded['email'];
 		let username: string = idTokenDecoded['cognito:username'];
-    console.log('USER SESSION RES', userSession);
+    	console.log('USER SESSION RES', userSession);
 		// if (username.startsWith('eneladfs_ENELINT\\')) {
 		// 	const parts = username.split('\\');
 		// 	parts[1] = parts[1].toLowerCase();

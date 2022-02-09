@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   }
 
   public logout() {
-    this.authService.logoutWithGoogle();
+    this.authService.logout();
+    this.userSessionService.setSessionData(null);
   }
 
 }
