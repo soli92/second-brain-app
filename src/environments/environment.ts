@@ -10,7 +10,7 @@ export const environment = {
   googleApiPrefix: 'https://www.googleapis.com',
   googleAuth: {
     clientId: '786422237616-qkqo0m488fgph1boaknkth09ms3telo0.apps.googleusercontent.com',
-    clientSecret: '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'
+    apiKey: 'AIzaSyB9euufbuEAXpAV4XoL9Apen-jyUEUqowA'
   },
   cognitoAuth: {
     userPoolId: 'eu-west-1_1aTbSXALN',
@@ -24,6 +24,10 @@ export const environment = {
 			responseType: 'token',
 			scope:  ['openid', 'profile', 'email'],
 		},
+  },
+  tmdbAuth: {
+    apiBaseEndpoint: 'https://api.themoviedb.org/3',
+    apiKeyV3: 'fc4dba0daa652b437303d1ba2ae1e8b9'
   }
 };
 
