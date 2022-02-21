@@ -1,0 +1,22 @@
+@import '../../../../styles/color-palette.scss';
+
+:host {
+    .m2b-file-uploader__container {
+        display: flex;
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    .m2b-file-uploader__input__container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-content: center;
+    }
+
+    .m2b-file-uploader__input {
+        display: flex;
+        flex-direction: row;
+        border-radius: 3%;
+    }
+}

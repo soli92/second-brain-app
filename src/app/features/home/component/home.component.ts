@@ -25,4 +25,8 @@ export class HomeComponent implements OnInit {
     this.userSessionService.setSessionData(null);
   }
 
+  public upload(event) {
+    console.log('FILE TO BE UPLOADED', event);
+  }
+
 }

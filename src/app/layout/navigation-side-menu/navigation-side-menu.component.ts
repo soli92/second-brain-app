@@ -20,11 +20,11 @@ export class NavigationSideMenuComponent implements OnInit {
   }
 
   public execItemClickFn(fnObj: SidemenuItemOnClickFnModel) {
-    this[fnObj.name]();
+    this[fnObj.name](...fnObj.args);
   }
 
-  private navigateTo() {
-    this.router.navigate(['jokes'])
+  private navigateTo(args: any) {
+    this.router.navigate(args)
   }
 
 }
