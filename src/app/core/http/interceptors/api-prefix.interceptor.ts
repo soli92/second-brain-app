@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpEvent, HttpHandler, HttpInterceptor, HttpRequest} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { UserSessionService } from '../../user-session/service/user-session.service';
 
 
 /**
@@ -9,6 +10,10 @@ import { environment } from 'src/environments/environment';
  */
 @Injectable()
 export class ApiPrefixInterceptor implements HttpInterceptor {
+  constructor(
+    private userSessionService: UserSessionService
+  ) {}
+
 
   intercept(
     request: HttpRequest<any>,
@@ -29,6 +34,19 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
           headers: headers
         }
       );
+    }
+
+    if (request.url.indexOf(environment.apiGwBaseEndpoint) !== -1) {
+      const idToken = this.userSessionService.getAuthToken()['jwtToken'];
+      const headers = request.headers
+      .set("Authorization", `Bearer ${idToken}`)
+
+      request = request.clone(
+        { 
+          headers
+        }
+      );
+
     }
     
     if (request.url.indexOf('i18n') === -1) {

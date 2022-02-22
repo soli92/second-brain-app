@@ -1,22 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { JokesComponent } from './component/jokes.component';
+
+import { BooksRoutingModule } from './books-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { JokesRoutingModule } from './jokes-routing.module';
+import { BooksComponent } from './component/books.component';
 
 
 
 @NgModule({
   declarations: [
-    JokesComponent
+    BooksComponent
   ],
   imports: [
+    BooksRoutingModule,
     CommonModule,
-    JokesRoutingModule,
     SharedModule
-  ],
-  exports: [
-    JokesComponent
   ]
 })
-export class JokesModule { }
+export class BooksModule { }

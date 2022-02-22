@@ -5,6 +5,8 @@
 export const environment = {
   production: false,
   i18nPrefix: '.',
+
+  apiGwBaseEndpoint: 'https://ixypa5nb2a.execute-api.eu-west-1.amazonaws.com/dev',
   chuckNorrisJokesApiPrefix: 'https://matchilling-chuck-norris-jokes-v1.p.rapidapi.com',
   chuckNorrisJokesApiKey: '54652f8a13msh8ab1079554f5d96p159c86jsn42f12f84d527',
   googleApiPrefix: 'https://www.googleapis.com',

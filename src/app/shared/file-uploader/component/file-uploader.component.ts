@@ -9,6 +9,9 @@ export class FileUploaderComponent implements OnInit {
   @Output()
   public onUploadButtonClicked = new EventEmitter<any>();
 
+  @Output()
+  public onFileSelectedEmitter = new EventEmitter<any>();
+
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
   public files  = [];
 
@@ -24,6 +27,20 @@ export class FileUploaderComponent implements OnInit {
     
     this.formData.append('file', event);
     this.onUploadButtonClicked.emit(this.formData);
+  }
+
+  onFileSelected(event) {
+  
+    const file: File = event.target.files[0];
+    if (file) {
+      const filename = file.name;
+
+      const formData = new FormData();
+      formData.append('thumbnail', file);
+      console.log('ON FILE SELECTED', formData);
+      this.onFileSelectedEmitter.emit(file);
+    }
+    
   }
 
 }

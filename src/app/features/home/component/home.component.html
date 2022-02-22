@@ -1,4 +1,4 @@
-<h1>Hello {{user.firstName}}</h1>
+<h1>Hello {{user.name}}</h1>
 <m2b-button [buttonType]="'normal-raised'" [buttonStyle]="'secondary'" [buttonLabel]="'Logout'" (onButtonClicked)="logout()"></m2b-button>
 
-<m2b-file-uploader (onUploadButtonClicked)="upload($event)"></m2b-file-uploader>
+<m2b-file-uploader (onFileSelectedEmitter)="upload($event)"></m2b-file-uploader>

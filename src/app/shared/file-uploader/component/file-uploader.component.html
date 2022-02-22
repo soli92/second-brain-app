@@ -1,8 +1,10 @@
 <div class="m2b-file-uploader__container">
     <div class="m2b-file-uploader__input__container">
-        <input class="m2b-file-uploader__input" type="file" #fileUpload id="fileUpload" name="fileUpload" multiple="multiple" accept="image/*" style="display:none;"/>
+        <input class="m2b-file-uploader__input" 
+            type="file" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" 
+            (change)="onFileSelected($event)"/>
         <m2b-button
-            [buttonType]="'fab'"
+            [buttonType]="'fab-plain'"
             [buttonStyle]="'primary'"
             [buttonMatIcon]="'file_upload'"
             (onButtonClicked)="emitUploadEvent($event)"

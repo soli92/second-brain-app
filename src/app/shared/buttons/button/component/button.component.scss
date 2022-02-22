@@ -19,6 +19,10 @@
         margin-inline: 0.5rem;
     }
 
+    .m2b-fab {
+        border-radius: 100%;
+    }
+
     .m2b-button__container--primary {
         .m2b-button, .m2b-fab {
             background-color: map-get($color-palette, primary);

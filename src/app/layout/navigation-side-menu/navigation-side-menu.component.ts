@@ -24,7 +24,7 @@ export class NavigationSideMenuComponent implements OnInit {
   }
 
   private navigateTo(args: any) {
-    this.router.navigate(args)
+    this.router.navigate([args])
   }
 
 }

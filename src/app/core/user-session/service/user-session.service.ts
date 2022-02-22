@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CognitoIdToken, CognitoUserSession } from 'amazon-cognito-identity-js';
 import { authTokenKey, userDataKey } from '../../local-storage/constants/storage-keys.constants';
 import { LocalStorageService } from '../../local-storage/service/local-storage.service';
 import { AuthToken, UserData } from '../models/user-session.models';
@@ -13,13 +14,21 @@ export class UserSessionService {
   ) { }
 
   public setSessionData(res) {
-    const userData: UserData = res;
+    const userSessionData: CognitoUserSession = res;
+    const userData: UserData = {
+      user_id: userSessionData.getIdToken().payload['custom:user_id'],
+      username: userSessionData.getIdToken().payload['cognito:username'],
+      name: userSessionData.getIdToken().payload['given_name'],
+      surname: userSessionData.getIdToken().payload['family_name'],
+      email: userSessionData.getIdToken().payload['email'],
+      picture: userSessionData.getIdToken().payload['picture'],
+    }
     console.log('RES',res);
-    this.localStorageService.setData(userDataKey, res);
-    this.setAuthToken(userData);
+    this.localStorageService.setData(userDataKey, userData);
+    this.setAuthToken(userSessionData);
   }
 
-  public getAuthToken(): AuthToken {
+  public getAuthToken(): CognitoIdToken{
     return this.localStorageService.getData(authTokenKey);
   }
 
@@ -27,9 +36,10 @@ export class UserSessionService {
     return this.localStorageService.getData(userDataKey);
   }
 
-  private setAuthToken(userData: UserData): void {
-    if (userData && userData.response) {
-      const authToken: AuthToken = new AuthToken(userData.response);
+  private setAuthToken(userSession: CognitoUserSession): void {
+    if (userSession && userSession.getIdToken()) {
+      //const authToken: AuthToken = new AuthToken(userData.response);
+      const authToken = userSession.getIdToken();
       this.localStorageService.setData(authTokenKey, authToken);
     }
   }

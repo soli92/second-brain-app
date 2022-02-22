@@ -4,19 +4,23 @@ export const navSideMenuConfig: SidemenuConfigModel = {
     direction: 'right',
     items: [
         {
-            nameI18n: 'Personal Projects',
+            nameI18n: 'Books',
             isActive: false,
-            matIcon: 'verified'
+            matIcon: 'library_books',
+            onClickFn: {
+                name: 'navigateTo',
+                args: ['books']
+            }
         },
         {
             nameI18n: 'About Me',
             isActive: false,
-            matIcon: 'pregnant_woman'
+            matIcon: 'filter'
         },
         {
-            nameI18n: 'About Me',
+            nameI18n: 'Jokes',
             isActive: false,
-            matIcon: 'pregnant_woman',
+            matIcon: 'flare',
             onClickFn: {
                 name: 'navigateTo',
                 args: ['jokes']

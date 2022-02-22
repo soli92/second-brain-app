@@ -1,6 +1,13 @@
 import { SocialUser } from "angularx-social-login";
 
-export interface UserData extends SocialUser { };
+export interface UserData {
+    user_id: string;
+    username: string;
+    name: string;
+    surname: string;
+    email: string;
+    picture?: string;
+};
 
 export interface GoogleAuthToken {
     access_token: string,
