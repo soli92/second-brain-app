@@ -7,6 +7,8 @@ import { SideMenuModule } from './side-menu/side-menu.module';
 
 import { FileUploaderComponent } from './file-uploader/component/file-uploader.component';
 import { EntertainmentPageComponent } from './entertainment-page/component/entertainment-page.component';
+import { GenericFormModule } from './generic-form/generic-form.module';
+
 
 
 export const sharedComponents = [
@@ -18,11 +20,12 @@ export const sharedComponents = [
 
 @NgModule({
   declarations: [
-    ...sharedComponents
+    ...sharedComponents,
   ],
   imports: [
     CommonModule,
     FormsModule,
+    GenericFormModule,
     MaterialModule,
     ReactiveFormsModule,
     SideMenuModule
@@ -30,6 +33,7 @@ export const sharedComponents = [
   exports: [
     ...sharedComponents,
     FormsModule,
+    GenericFormModule,
     MaterialModule,
     ReactiveFormsModule,
     SideMenuModule

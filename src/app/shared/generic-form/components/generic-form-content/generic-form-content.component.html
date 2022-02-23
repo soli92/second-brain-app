@@ -1,0 +1,9 @@
+<div class="m2b-generic-form-content__container">
+    <div *ngFor="let control of genericFormConfig.controls">
+        <ng-container [ngSwitch]="control.type">
+            <ng-container *ngSwitchCase="controlTypeMap['array']"></ng-container>
+            <ng-container *ngSwitchCase="controlTypeMap['control']"></ng-container>
+            <ng-container *ngSwitchCase="controlTypeMap['group']"></ng-container>
+        </ng-container>
+    </div>
+</div>
