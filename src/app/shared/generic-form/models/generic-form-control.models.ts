@@ -21,9 +21,7 @@ export class GenericFormControlBuilder {
     constructor(
         private fb: FormBuilder,
         private formConfig: GenericFormConfigModel
-    ) {
-
-    }
+    ) {}
 
     public buildFormGroup(): FormGroup {
         this.formConfig

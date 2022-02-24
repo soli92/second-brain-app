@@ -2,7 +2,7 @@
   <form [formGroup]="genericformGroup" (ngSubmit)="null">
   
     <div mat-dialog-content>
-        <m2b-generic-form-content></m2b-generic-form-content>
+        <m2b-generic-form-content [genericFormConfig]="formConfig"></m2b-generic-form-content>
     </div> <!-- mat-dialog-content -->
   
     <div mat-dialog-actions class="dialog-actions">

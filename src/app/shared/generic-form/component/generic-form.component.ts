@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NerdyApiGwResources } from 'src/app/core/api-gw/models/api-gw.models';
 import { GenericFormMode } from '../enums/generic-form-mode.enum';
+import { GenericFormConfigModel } from '../models/generic-form-config.model';
 import { GenericFormDataModel } from '../models/generic-form-data.models';
 
 @Component({
@@ -16,6 +17,7 @@ export class GenericFormComponent implements OnInit {
   public title: string;
   public mode: GenericFormMode;
   public scope: NerdyApiGwResources;
+  public formConfig: GenericFormConfigModel;
   
   constructor(
     @Optional() @Inject(MAT_DIALOG_DATA) public genericFormData: GenericFormDataModel,
