@@ -2,24 +2,26 @@
 
 :host {
 
-    .m2b-button, .m2b-fab {
-        border: none;
-        display: flex;
-        padding: 0.5rem;
-        cursor: pointer;
+    // .m2b-button, .m2b-fab {
+    //     border: none;
+    //     display: flex;
+    //     padding: 0.5rem;
+    //     cursor: pointer;
 
-        &.disabled {
-            opacity: 0.7;
-            cursor: not-allowed;
-        }
-    };
+    //     &.disabled {
+    //         opacity: 0.7;
+    //         cursor: not-allowed;
+    //     }
+    // };
 
-    .m2b-button {
-        height: 35px;
-        margin-inline: 0.5rem;
-    }
+    // .m2b-button {
+    //     height: 35px;
+    //     margin-inline: 0.5rem;
+    // }
 
     .m2b-fab {
+        height: 40px;
+        width: 40px;
         border-radius: 100%;
     }
 
