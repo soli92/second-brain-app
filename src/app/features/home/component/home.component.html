@@ -1,4 +1,12 @@
 <h1>Hello {{user.name}}</h1>
+<div class="text-white px-6 py-4 border-0 rounded relative mb-4 bg-pink-500">
+    <span class="inline-block align-middle mr-8">
+      <b class="capitalize">pink!</b> This is a pink alert - check it out!
+    </span>
+    <button class="absolute bg-transparent text-2xl font-semibold leading-none right-0 top-0 mt-4 mr-6 outline-none focus:outline-none">
+      <span>×</span>
+    </button>
+  </div>
 <m2b-button [buttonType]="'normal-raised'" [buttonStyle]="'secondary'" [buttonLabel]="'Logout'" (onButtonClicked)="logout()"></m2b-button>
 
 <m2b-file-uploader (onFileSelectedEmitter)="upload($event)"></m2b-file-uploader>
