@@ -1,8 +1,13 @@
-import { FormBuilder, FormGroup, ValidatorFn } from "@angular/forms"
+import { FormBuilder, FormGroup, ValidatorFn, Validators } from "@angular/forms"
+import { GenericFormComponents } from "../enums/generic-form-components.type";
+
 import { GenericFormControlType } from "../enums/generic-form-control-type.enum";
 import { GenericFormConfigModel } from "./generic-form-config.model";
 
 export class GenericFormControlModel {
+    controlName: string;
+    componentType: GenericFormComponents;
+    controlLabel: string;
     value: any;
     validators?: ValidatorFn[];
     disableCondition?: any | (() => boolean);
@@ -29,7 +34,7 @@ export class GenericFormControlBuilder {
             .forEach(
                 genericControl => {
                     let control;
-                    switch (genericControl.type) {
+                    switch (genericControl.controlType) {
                         case GenericFormControlType.ARRAY:
                             control = this.getFormArray((genericControl.config as (GenericFormControlModel | GenericFormControlGroupModel)[]));
                             this.genericFormGroup.addControl(genericControl.controlName, control);
@@ -48,15 +53,17 @@ export class GenericFormControlBuilder {
 
                 }
             )
+        console.log('FORM GROUP BUILDER | buildFormGroup()', this.genericFormGroup);
         return this.genericFormGroup;
     }
 
     private getFormControl(config: GenericFormControlModel) {
+        const validators = config.validators && config.validators.length > 0 ? [...config.validators] : [];
         return this.fb.control(
             {
                 value: config.value,
                 disabled: config.disableCondition
-            }, [...config.validators]);
+            }, validators);
     }
 
     private getFormArray(configs: (GenericFormControlModel | GenericFormControlGroupModel)[]) {

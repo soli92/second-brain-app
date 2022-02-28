@@ -29,9 +29,8 @@ export class BooksService extends ApiGwService {
   }
 
   public insertNewBook(request: InsertBookRequest): Observable<any> {
-    const urlPattern = '{{user_id}}';
 
-    return this.insert(request, urlPattern);
+    return this.insert(request);
   }
 
   public deleteBook(request: DeleteBookRequest): Observable<any> {

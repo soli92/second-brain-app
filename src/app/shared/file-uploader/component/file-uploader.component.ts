@@ -1,4 +1,5 @@
-import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'm2b-file-uploader',
@@ -6,11 +7,16 @@ import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '
   styleUrls: ['./file-uploader.component.scss']
 })
 export class FileUploaderComponent implements OnInit {
+  @Optional() @Input() withUpload: boolean;
+    
   @Output()
   public onUploadButtonClicked = new EventEmitter<any>();
 
   @Output()
   public onFileSelectedEmitter = new EventEmitter<any>();
+
+  @Input()
+  public formControl: FormControl;
 
   @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
   public files  = [];
@@ -34,10 +40,10 @@ export class FileUploaderComponent implements OnInit {
     const file: File = event.target.files[0];
     if (file) {
       const filename = file.name;
-
       const formData = new FormData();
       formData.append('thumbnail', file);
       console.log('ON FILE SELECTED', formData);
+      this.formControl.setValue(file);
       this.onFileSelectedEmitter.emit(file);
     }
     

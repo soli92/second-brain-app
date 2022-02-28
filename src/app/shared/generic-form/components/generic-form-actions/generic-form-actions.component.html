@@ -1,0 +1,4 @@
+<div class="m2b-generic-form-actions__container">
+    <m2b-button [buttonStyle]="'primary'" [buttonType]="'normal-raised'" [buttonLabel]="'Clear'" (onButtonClicked)="onActionButtonClicked('clear', $event)" ></m2b-button>
+    <m2b-button [buttonStyle]="'secondary'" [buttonType]="'normal-raised'" [buttonLabel]="submitButtonLabel" (onButtonClicked)="onActionButtonClicked('submit', $event)" [disabled]="disableCondition" ></m2b-button>
+</div>

@@ -8,13 +8,15 @@ import { SideMenuModule } from './side-menu/side-menu.module';
 import { FileUploaderComponent } from './file-uploader/component/file-uploader.component';
 import { EntertainmentPageComponent } from './entertainment-page/component/entertainment-page.component';
 import { GenericFormModule } from './generic-form/generic-form.module';
+import { FileUploaderModule } from './file-uploader/file-uploader.module';
+import { ButtonsModule } from './buttons/buttons.module';
 
 
 
 export const sharedComponents = [
-  ButtonComponent,
+  //ButtonComponent,
   EntertainmentPageComponent,
-  FileUploaderComponent
+  //FileUploaderComponent
 ]
 
 
@@ -23,7 +25,9 @@ export const sharedComponents = [
     ...sharedComponents,
   ],
   imports: [
+    ButtonsModule,
     CommonModule,
+    FileUploaderModule,
     FormsModule,
     GenericFormModule,
     MaterialModule,
@@ -32,6 +36,8 @@ export const sharedComponents = [
   ],
   exports: [
     ...sharedComponents,
+    ButtonsModule,
+    FileUploaderModule,
     FormsModule,
     GenericFormModule,
     MaterialModule,

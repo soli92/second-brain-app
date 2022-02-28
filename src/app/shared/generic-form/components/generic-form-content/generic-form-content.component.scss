@@ -1,0 +1,7 @@
+@import '../../../../../styles/color-palette.scss';
+
+:host {
+    .m2b-input__text--error {
+        color: map-get($color-palette, error)
+    }
+}

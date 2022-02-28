@@ -1,45 +1,10 @@
 <h1 mat-dialog-title>{{title}}</h1>
-  <form [formGroup]="genericformGroup" (ngSubmit)="null">
-  
-    <div mat-dialog-content>
-        <m2b-generic-form-content [genericFormConfig]="formConfig"></m2b-generic-form-content>
-    </div> <!-- mat-dialog-content -->
-  
-    <div mat-dialog-actions class="dialog-actions">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-12 offset-0 col-md-4 offset-md-4">
-            <button class="custom-full-width 
-                          {{genericformGroup.valid 
-                            ? 'custom-command-button custom-command-update-button custom-cursor-pointer' 
-                            : 'custom-command-disabled-button custom-command-update-button custom-cursor-disabled'}} 
-                          text-center"
-                    type="submit" 
-                    [disabled]="!genericformGroup.valid">
-              <span>{{ 'Upload' | translate }} </span>
-            </button>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-12 offset-0 col-md-6 offset-md-3">
-            <p class="text-center">
-              {{ 'progressValue' }}% 
-              <i class="fa fa-times-circle pointer text-red" 
-                (click)="null"></i>
-            </p>
-            <mat-progress-bar mode="determinate" value="{{ 'progressValue' }}"></mat-progress-bar> 
-          </div>
-        </div>
-      </div>
-    </div> <!-- mat-dialog-actions -->
-  
-    <div class="custom-close-button">
-      <i (click) = "null" 
-        class="fa fa-times-circle fa-3x 
-              {{true 
-                ? 'custom-primary-icon-color custom-cursor-pointer' 
-                : 'text-dark-grey'}} 
-              custom-close-icon"
-        aria-hidden="true"></i>
-    </div> <!-- close-button -->
-  </form>
+
+<div mat-dialog-content>
+  <m2b-generic-form-content [genericFormControlGroup]="genericformGroup" [genericFormConfig]="formConfig" (genericFormControlGroupChange)="updateFormGroup($event)">
+  </m2b-generic-form-content>
+</div> <!-- mat-dialog-content -->
+
+<div mat-dialog-actions>
+  <m2b-generic-form-actions [mode]="mode" (buttonClickedEmitter)="onActionButtonClicked($event)" [disableCondition]="genericformGroup.invalid"></m2b-generic-form-actions>
+</div> <!-- mat-dialog-actions -->

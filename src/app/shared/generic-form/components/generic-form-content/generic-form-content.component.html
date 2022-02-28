@@ -1,9 +1,76 @@
 <div class="m2b-generic-form-content__container">
-    <div *ngFor="let control of genericFormConfig.controls">
-        <ng-container [ngSwitch]="control.type">
-            <ng-container *ngSwitchCase="controlTypeMap['array']"></ng-container>
-            <ng-container *ngSwitchCase="controlTypeMap['control']"></ng-container>
-            <ng-container *ngSwitchCase="controlTypeMap['group']"></ng-container>
-        </ng-container>
-    </div>
+    <form [formGroup]="genericFormControlGroup" (change)="onGenericFormControlGroupChange($event)">
+        <div *ngFor="let control of genericFormConfig.controls">
+            <ng-container [ngSwitch]="control.controlType">
+                <ng-container *ngSwitchCase="controlTypeMap['array']">
+                    <div [formArrayName]="control.controlName">
+                        <ng-container *ngFor="let genericControlConfig of getConfigForArray(control); let i = index">
+    
+                            <ng-container *ngIf="checkControlType(genericControlConfig) === controlTypeMap['control']">
+                                <ng-container *ngTemplateOutlet="singleControl; context:{config: genericControlConfig}"></ng-container>
+                            </ng-container>
+    
+                            <ng-container *ngIf="checkControlType(genericControlConfig) === controlTypeMap['group']">
+                                <ng-container *ngTemplateOutlet="controlGroup; context:{config: genericControlConfig}"></ng-container>
+                            </ng-container>
+                            
+                        </ng-container>
+                    </div>
+                </ng-container>
+                <ng-container *ngSwitchCase="controlTypeMap['control']">
+                    <ng-container *ngTemplateOutlet="singleControl; context:{config: control}"></ng-container>
+                </ng-container>
+                <ng-container *ngSwitchCase="controlTypeMap['group']"></ng-container>
+            </ng-container>
+        </div>
+    </form>
 </div>
+
+<ng-template #input let-config="config">
+    <mat-form-field appearance="fill">
+        <mat-label>{{config.config.controlLabel}}</mat-label>
+        <input matInput [formControl]="getFormControl(config)">
+    </mat-form-field>
+    <small class="m2b-input__text--error" *ngIf="checkFormError(config.controlName, 'required')">This field is required</small>
+</ng-template>
+
+<ng-template #inputFile let-config="config">
+    <mat-label>{{config.config.controlLabel}}</mat-label>
+    <m2b-file-uploader
+        [formControl]="getFormControl(config)"
+        (onFileSelectedEmitter)="onInputFileSelected($event)"></m2b-file-uploader>
+</ng-template>
+
+<ng-template #checkbox>
+
+</ng-template>
+
+<ng-template #select>
+
+</ng-template>
+
+<ng-template #singleControl let-config="config">
+
+    <ng-container [ngSwitch]="config.componentType">
+        <ng-container *ngSwitchCase="'input'">
+            <ng-container *ngTemplateOutlet="input; context: {config}"></ng-container>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'input-file'">
+            <ng-container *ngTemplateOutlet="inputFile; context: {config}"></ng-container>
+        </ng-container>
+        
+        <ng-container *ngSwitchCase="'select'">
+            <ng-container *ngTemplateOutlet="select; context: {config}"></ng-container>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'checkbox'">
+            <ng-container *ngTemplateOutlet="checkbox; context: {config}"></ng-container>
+        </ng-container>
+    </ng-container>
+    
+</ng-template>
+
+<ng-template #controlGroup>
+
+</ng-template>
