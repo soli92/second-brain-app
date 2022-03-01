@@ -10,5 +10,5 @@ export interface GenericFormControlConfigModel {
     config: GenericFormControlModel | GenericFormControlGroupModel | (GenericFormControlModel | GenericFormControlGroupModel)[]
 }
 export interface GenericFormConfigModel {
-    controls: GenericFormControlConfigModel[]
+    controls: GenericFormControlConfigModel[];
 }

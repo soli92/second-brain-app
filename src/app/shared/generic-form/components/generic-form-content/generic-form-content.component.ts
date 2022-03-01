@@ -68,7 +68,10 @@ export class GenericFormContentComponent implements OnInit {
   }
 
   public onInputFileSelected(event) {
-    if (event) this.inputFileEventEmitter.emit(event);
+    if (event) {
+      console.log('ON INPUT FILE SELECTED | EVENT:', event);
+      this.inputFileEventEmitter.emit(event);
+    }
   }
 
   public checkFormError(path: string, errorCode: string) {

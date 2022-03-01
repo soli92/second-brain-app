@@ -41,10 +41,13 @@ export class FileUploaderComponent implements OnInit {
     if (file) {
       const filename = file.name;
       const formData = new FormData();
-      formData.append('thumbnail', file);
-      console.log('ON FILE SELECTED', formData);
-      this.formControl.setValue(file);
-      this.onFileSelectedEmitter.emit(file);
+      formData.append('file', file, filename);
+      console.log('ON FILE SELECTED', file);
+      this.formControl.setValue({
+        name: filename,
+        data: formData
+      });
+      this.onFileSelectedEmitter.emit(formData);
     }
     
   }
