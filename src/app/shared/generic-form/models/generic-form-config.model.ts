@@ -7,6 +7,7 @@ export interface GenericFormControlConfigModel {
     controlName: string;
     controlType: GenericFormControlType,
     componentType: GenericFormComponents,
+    fileType?: |'image' | 'video' | 'all',
     config: GenericFormControlModel | GenericFormControlGroupModel | (GenericFormControlModel | GenericFormControlGroupModel)[]
 }
 export interface GenericFormConfigModel {

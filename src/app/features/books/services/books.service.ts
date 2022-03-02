@@ -29,7 +29,7 @@ export class BooksService extends ApiGwService {
   }
 
   public insertNewBook(request: InsertBookRequest): Observable<any> {
-
+    console.log('INSERT BOOK REQUEST', request);
     return this.insert(request);
   }
 

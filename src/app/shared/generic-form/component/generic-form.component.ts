@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Inject, Input, OnInit, Optional, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { NerdyApiGwResources } from 'src/app/core/api-gw/models/api-gw.models';
 import { GenericFormMode } from '../enums/generic-form-mode.enum';
 import { IGenericFormActionButtonEvent } from '../models/generic-form-action-button.models';
@@ -25,12 +25,13 @@ export class GenericFormComponent implements OnInit {
 
   constructor(
     @Optional() @Inject(MAT_DIALOG_DATA) public genericFormData: GenericFormDataModel,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    public dialogRef: MatDialogRef<GenericFormComponent>
   ) { }
 
   ngOnInit(): void {
-    //this._checkMode();
-    this.mode = GenericFormMode.INSERT;
+    this._checkMode();
+    //this.mode = GenericFormMode.INSERT;
     this._initGenericFormControlGroup();
   }
 
@@ -67,6 +68,10 @@ export class GenericFormComponent implements OnInit {
             buttonClicked: GenericFormMode.INSERT,
             data: this.genericformGroup.getRawValue()
           })
+          this.dialogRef.close({
+            buttonClicked: GenericFormMode.INSERT,
+            data: this.genericformGroup.getRawValue()
+          });
           break;
 
         default:
@@ -84,6 +89,8 @@ export class GenericFormComponent implements OnInit {
   private _initForm() { }
 
   private _initGenericFormControlGroup() {
+    this.formConfig = this.genericFormData.formConfig;
+    this.title = this.genericFormData.title;
     this.genericformGroup = new GenericFormControlBuilder(this.formBuilder, this.formConfig).buildFormGroup();
   }
 

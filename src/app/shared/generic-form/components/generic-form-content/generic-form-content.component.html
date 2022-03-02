@@ -37,6 +37,7 @@
 <ng-template #inputFile let-config="config">
     <mat-label>{{config.config.controlLabel}}</mat-label>
     <m2b-file-uploader
+        [fileType]="config.fileType"
         [formControl]="getFormControl(config)"
         (onFileSelectedEmitter)="onInputFileSelected($event)"></m2b-file-uploader>
 </ng-template>

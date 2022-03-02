@@ -1,5 +1,6 @@
 import { HttpParams } from "@angular/common/http";
 import { timeStamp } from "console";
+import { runInThisContext } from "vm";
 
 export class ApiGatewayRequest<T> {
     urlPattern: string;
@@ -32,6 +33,7 @@ export class ApiGatewayRequest<T> {
         this.pathParams = [];
 		this.url = (urlPattern ? urlPattern : this.urlPattern).replace(/\{\{([^\}]*)\}\}/gi, (match, paramKey) => {
 			const value: string = request[paramKey] ? request[paramKey] : request[nestedKey][paramKey];
+            delete this.body[paramKey]
 			this.pathParams.push(paramKey);
 			return value;
 		});

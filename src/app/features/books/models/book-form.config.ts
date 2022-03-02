@@ -19,11 +19,12 @@ export const BOOKS_FORM_CONFIG: GenericFormConfigModel = {
             controlName: 'file',
             controlType: GenericFormControlType.CONTROL,
             componentType: 'input-file',
+            fileType: 'image',
             config: {
                 controlName: 'file',
                 componentType: 'input-file',
                 controlLabel: 'Select Image',
-                value: ''
+                value: null
             }
         },
         {

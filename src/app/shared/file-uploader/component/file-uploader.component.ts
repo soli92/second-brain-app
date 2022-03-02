@@ -1,6 +1,8 @@
 import { Component, ElementRef, EventEmitter, Input, OnInit, Optional, Output, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 
+import * as _ from 'lodash';
+
 @Component({
   selector: 'm2b-file-uploader',
   templateUrl: './file-uploader.component.html',
@@ -8,7 +10,7 @@ import { FormControl } from '@angular/forms';
 })
 export class FileUploaderComponent implements OnInit {
   @Optional() @Input() withUpload: boolean;
-    
+
   @Output()
   public onUploadButtonClicked = new EventEmitter<any>();
 
@@ -18,8 +20,18 @@ export class FileUploaderComponent implements OnInit {
   @Input()
   public formControl: FormControl;
 
-  @ViewChild("fileUpload", {static: false}) fileUpload: ElementRef;
-  public files  = [];
+  @Input()
+  public fileType: string;
+
+  @ViewChild("fileUpload", { static: false }) fileUpload: ElementRef;
+  public files = [];
+
+  private imageFileControls = {
+    max_size: 20971520,
+    allowed_types: ['image/png', 'image/jpeg'],
+    max_height: 15200,
+    max_width: 25600
+  }
 
   private formData = new FormData();
 
@@ -30,26 +42,79 @@ export class FileUploaderComponent implements OnInit {
 
   emitUploadEvent(event) {
     console.log('FILE', event);
-    
+
     this.formData.append('file', event);
     this.onUploadButtonClicked.emit(this.formData);
   }
 
   onFileSelected(event) {
-  
+
     const file: File = event.target.files[0];
-    if (file) {
-      const filename = file.name;
-      const formData = new FormData();
-      formData.append('file', file, filename);
-      console.log('ON FILE SELECTED', file);
-      this.formControl.setValue({
-        name: filename,
-        data: formData
-      });
-      this.onFileSelectedEmitter.emit(formData);
+    switch (this.fileType) {
+
+      case 'image':
+        if (this.checkFile(file, 'image')) {
+          const reader = new FileReader();
+          reader.onload = (e: any) => {
+            const image = new Image();
+            image.src = e.target.result;
+            image.onload = rs => {
+              const img_height = rs.currentTarget['height'];
+              const img_width = rs.currentTarget['width'];
+
+              console.log(img_height, img_width);
+              const imgBase64Path = e.target.result;
+              this.formControl.setValue({
+                  name: file.name,
+                  data: imgBase64Path
+                });
+              this.onFileSelectedEmitter.emit({
+                name: file.name,
+                data: imgBase64Path
+              });
+            }
+          }
+          reader.readAsDataURL(file)
+        }
+        break
     }
-    
+    // if (file) {
+    //   const filename = file.name;
+    //   const formData = new FormData();
+    //   formData.append('file', file, filename);
+    //   console.log('ON FILE SELECTED', file);
+    //   file.arrayBuffer().then(
+    //     arrayBuffer => {
+    //       this.formControl.setValue({
+    //         name: filename,
+    //         data: new Blob([arrayBuffer], {type: file.type})
+    //       });
+    //       this.onFileSelectedEmitter.emit(formData);
+    //     }
+    //   )
+    // }
+
+  }
+
+  private checkFile(file: File, fileType: string): boolean {
+    switch (fileType) {
+      case 'image':
+        if (file.size > this.imageFileControls.max_size) {
+          const imageError =
+            'Maximum size allowed is ' + this.imageFileControls.max_size / 1000 + 'Mb';
+
+          return false;
+        }
+
+        if (!_.includes(this.imageFileControls.allowed_types, file.type)) {
+          const imageError = 'Only Images are allowed ( JPG | PNG )';
+          return false;
+        }
+        return true
+
+      default:
+        return false
+    }
   }
 
 }

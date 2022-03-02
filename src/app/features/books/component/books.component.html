@@ -1,12 +1,17 @@
 
 <m2b-entertainment-page [pageTitle]="'Books'" (fabButtonClicked)="openDialog($event)">
-    <div class="example-class">{{'pippo non lo sa'}}</div>
-    <div class="example-form-container">
+    <ng-container *ngFor="let bookItem of bookList">
+        <div *ngIf="bookItem.image_url">
+            <img src="{{bookItem.image_url}}" alt="">
+        </div>
+    </ng-container>
+    
+    <!-- <div class="example-form-container">
         <m2b-generic-form 
             [title]="'Insert Book'"
             [mode]="formMode"
             [formConfig]="config"
             (onActionButtonEmitter)="formActionButtonClicked($event)"
         ></m2b-generic-form>
-    </div>
+    </div> -->
 </m2b-entertainment-page>

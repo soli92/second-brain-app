@@ -38,8 +38,12 @@ export class ApiPrefixInterceptor implements HttpInterceptor {
 
     if (request.url.indexOf(environment.apiGwBaseEndpoint) !== -1) {
       const idToken = this.userSessionService.getAuthToken()['jwtToken'];
-      const headers = request.headers
+      let headers = request.headers
       .set("Authorization", `Bearer ${idToken}`)
+
+      if (request.method.toLocaleLowerCase() == 'post' && request.body['data']['file']) {
+        headers = headers.set('Content-Type', 'multipart/form-data')
+      }
 
       request = request.clone(
         { 
