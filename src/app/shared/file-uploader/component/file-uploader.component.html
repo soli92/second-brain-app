@@ -4,15 +4,16 @@
             <input matInput type="text" (click)="fileUpload.click()"/>
         </mat-form-field> -->
 
-        <input class="m2b-file-uploader__input"
-            type="file" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" 
+        <input hidden
+            type="file" [formControl]="formControl" #fileUpload id="fileUpload" name="fileUpload" accept="image/*" 
             (change)="onFileSelected($event)"/>
         <m2b-button
-            *ngIf="withUpload"
-            [buttonType]="'fab-plain'"
+            [buttonType]="'normal-raised'"
             [buttonStyle]="'primary'"
+            [buttonLabel]="'Choose'"
             [buttonMatIcon]="'file_upload'"
-            (onButtonClicked)="emitUploadEvent($event)"
+            (onButtonClicked)="fileUpload.click()"
             ></m2b-button>
+        <img *ngIf="imageSelected" src="{{imageSelected}}" alt="">
     </div>
 </div>

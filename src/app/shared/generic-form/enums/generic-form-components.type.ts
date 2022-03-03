@@ -3,3 +3,4 @@ export type GenericFormComponents =
     | 'input-file'
     | 'checkbox'
     | 'select'
+    | 'text-area'

@@ -27,11 +27,13 @@
 </div>
 
 <ng-template #input let-config="config">
-    <mat-form-field appearance="fill">
-        <mat-label>{{config.config.controlLabel}}</mat-label>
-        <input matInput [formControl]="getFormControl(config)">
-    </mat-form-field>
-    <small class="m2b-input__text--error" *ngIf="checkFormError(config.controlName, 'required')">This field is required</small>
+    <div class="m2b-input__container">
+        <mat-form-field appearance="fill">
+            <mat-label>{{config.config.controlLabel}}</mat-label>
+            <input matInput [formControl]="getFormControl(config)">
+        </mat-form-field>
+        <small class="m2b-input__text--error" *ngIf="checkFormError(config.controlName, 'required')">This field is required</small>
+    </div>
 </ng-template>
 
 <ng-template #inputFile let-config="config">
@@ -50,6 +52,16 @@
 
 </ng-template>
 
+<ng-template #textArea let-config="config">
+    <div class="m2b-input__container">
+        <mat-form-field appearance="fill">
+            <mat-label>{{config.config.controlLabel}}</mat-label>
+            <textarea matInput [formControl]="getFormControl(config)" rows="8"></textarea>
+        </mat-form-field>
+        <small class="m2b-input__text--error" *ngIf="checkFormError(config.controlName, 'required')">This field is required</small>
+    </div>
+</ng-template>
+
 <ng-template #singleControl let-config="config">
 
     <ng-container [ngSwitch]="config.componentType">
@@ -59,6 +71,10 @@
 
         <ng-container *ngSwitchCase="'input-file'">
             <ng-container *ngTemplateOutlet="inputFile; context: {config}"></ng-container>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'text-area'">
+            <ng-container *ngTemplateOutlet="textArea; context: {config}"></ng-container>
         </ng-container>
         
         <ng-container *ngSwitchCase="'select'">

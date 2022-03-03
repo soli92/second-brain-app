@@ -83,7 +83,7 @@ export class GenericFormContentComponent implements OnInit {
 
   public onGenericFormControlGroupChange(event) {
     console.log('FORM GROUP CHANGE | generic form content', event);
-
+    this.genericFormControlGroup.updateValueAndValidity();
     this.genericFormControlGroupChange.emit(this.genericFormControlGroup);
   }
 

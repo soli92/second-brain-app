@@ -26,12 +26,14 @@ export class FileUploaderComponent implements OnInit {
   @ViewChild("fileUpload", { static: false }) fileUpload: ElementRef;
   public files = [];
 
+  public imageSelected: any;
+
   private imageFileControls = {
     max_size: 20971520,
-    allowed_types: ['image/png', 'image/jpeg'],
+    allowed_types: ['image/png', 'image/jpeg', 'iamge/jpg'],
     max_height: 15200,
     max_width: 25600
-  }
+  };
 
   private formData = new FormData();
 
@@ -58,6 +60,7 @@ export class FileUploaderComponent implements OnInit {
           reader.onload = (e: any) => {
             const image = new Image();
             image.src = e.target.result;
+            this.imageSelected = image.src;
             image.onload = rs => {
               const img_height = rs.currentTarget['height'];
               const img_width = rs.currentTarget['width'];
@@ -73,8 +76,8 @@ export class FileUploaderComponent implements OnInit {
                 data: imgBase64Path
               });
             }
-          }
-          reader.readAsDataURL(file)
+          };
+          reader.readAsDataURL(file);
         }
         break
     }

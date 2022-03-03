@@ -18,6 +18,11 @@ export const navSideMenuConfig: SidemenuConfigModel = {
             matIcon: 'filter'
         },
         {
+            nameI18n: 'About Pippo',
+            isActive: false,
+            matIcon: 'filter'
+        },
+        {
             nameI18n: 'Jokes',
             isActive: false,
             matIcon: 'flare',

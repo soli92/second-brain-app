@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { NavigationEnd, Router, RouterEvent } from '@angular/router';
 import { OverlayPanelService } from 'src/app/shared/services/overlay-panel.service';
 import { NavigationSideMenuComponent } from '../../navigation-side-menu/navigation-side-menu.component';
 import { OverlayPanelConfigModel } from '../../overlay-panel/models/overlay-panel.models';
@@ -10,6 +10,8 @@ import { OverlayPanelConfigModel } from '../../overlay-panel/models/overlay-pane
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
+  @Input() public currentUrl: string;
+  public sectionTitle: string;
 
   constructor(
     private router: Router,
@@ -17,6 +19,30 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.router.events
+        .subscribe(
+          event => {
+            switch (true) {
+              case event instanceof NavigationEnd:
+                this.currentUrl = (event as RouterEvent).url;
+                console.log('CURRENT ROUTE', this.currentUrl);
+                switch (this.currentUrl) {
+                  case '/books':
+                    this.sectionTitle = 'My Books'
+                  break;
+
+                  case '/jokes':
+                    this.sectionTitle = 'Chuck Norris Jokes'
+                  break;
+
+                  default:
+                    this.sectionTitle = 'Soli Second Brain'
+                  break;
+                }
+              break
+            }
+          }
+        )
   }
 
   public navigateToLogin() {

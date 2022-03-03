@@ -1,8 +1,12 @@
 :host {
     width: 100%;
+    display: flex;
+    justify-content: center;
+
     .m2b-generic-form-actions__container {
         display: flex;
         justify-content: space-between;
         align-content: center;
+        width: 50%;
     }
 }

@@ -1,26 +1,26 @@
 <ng-container [ngSwitch]="buttonType">
     <div class="m2b-button__container--{{buttonStyle ? buttonStyle : 'primary'}}">
-        <button *ngSwitchCase="'fab'" (click)="buttonClick($event)" class="m2b-fab mat-fab material-icons"
+        <button *ngSwitchCase="'fab'" (click)="!disabled ? buttonClick($event) : null" class="m2b-fab mat-fab material-icons"
             [ngClass]="{disabled}" aria-label="Add"><mat-icon class="m2b-fab__icon">{{buttonMatIcon ?
                 buttonMatIcon : 'add'}}</mat-icon></button>
 
-        <button *ngSwitchCase="'fab-plain'" (click)="buttonClick($event)" class="m2b-fab mat-icon-button m2b-fab--plain"
+        <button *ngSwitchCase="'fab-plain'" (click)="!disabled ? buttonClick($event) : null" class="m2b-fab mat-icon-button m2b-fab--plain"
             [ngClass]="{disabled}" aria-label="Add"><mat-icon class="m2b-fab__icon">{{buttonMatIcon ?
                 buttonMatIcon : 'add'}}</mat-icon></button>
 
-        <button *ngSwitchCase="'normal-plain'" (click)="buttonClick($event)" type="button" [ngClass]="{disabled}"
+        <button *ngSwitchCase="'normal-plain'" (click)="!disabled ? buttonClick($event) : null" type="button" [ngClass]="{disabled}"
             class="m2b-button mat-button m2b-button--plain">
             <span *ngIf="buttonMatIcon" class='material-icons m2b-fab__icon'>{{buttonMatIcon }}</span>
             {{buttonLabel ? buttonLabel : 'Press'}}
         </button>
 
-        <button *ngSwitchCase="'normal-raised'" (click)="buttonClick($event)" type="button" [ngClass]="{disabled}"
+        <button *ngSwitchCase="'normal-raised'" (click)="!disabled ? buttonClick($event) : null" type="button" [ngClass]="{disabled}"
             class="m2b-button mat-button m2b-button--raised">
             <span *ngIf="buttonMatIcon" class='material-icons m2b-fab__icon'>{{buttonMatIcon}}</span>
             {{buttonLabel ? buttonLabel : 'Press'}}
         </button>
 
-        <button *ngSwitchDefault [ngClass]="{disabled}" (click)="buttonClick($event)" class="m2b-fab material-icons"
+        <button *ngSwitchDefault [ngClass]="{disabled}" (click)="!disabled ? buttonClick($event) : null" class="m2b-fab material-icons"
             aria-label="Add"><span class="m2b-fab__icon">{{buttonMatIcon ?
                 buttonMatIcon : 'add'}}</span></button>
     </div>

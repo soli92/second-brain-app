@@ -69,12 +69,15 @@ export const BOOKS_FORM_CONFIG: GenericFormConfigModel = {
         {
             controlName: 'description',
             controlType: GenericFormControlType.CONTROL,
-            componentType: 'input',
+            componentType: 'text-area',
             config: {
                 controlName: 'description',
-                componentType: 'input',
+                componentType: 'text-area',
                 controlLabel: 'Description',
-                value: ''
+                value: '',
+                validators: [
+                    Validators.maxLength(256)
+                ]
             }
         }
     ]

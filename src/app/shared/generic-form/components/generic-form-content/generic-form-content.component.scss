@@ -1,6 +1,12 @@
 @import '../../../../../styles/color-palette.scss';
 
 :host {
+
+    .m2b-input__container {
+        display: flex;
+        flex-direction: column;
+    }
+
     .m2b-input__text--error {
         color: map-get($color-palette, error)
     }

@@ -12,6 +12,12 @@
         flex-direction: row;
         justify-content: center;
         align-content: center;
+
+        img {
+            height: 60px;
+            width: auto;
+            max-width: 100px;
+        }
     }
 
     .m2b-file-uploader__input {
