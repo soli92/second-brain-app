@@ -82,7 +82,7 @@ export class GenericFormComponent implements OnInit {
 
   }
 
-  private _checkMode() {
+  private _checkMode() {  
     this.mode = this.genericFormData.mode;
   }
 

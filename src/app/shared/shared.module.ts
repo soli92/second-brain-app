@@ -10,6 +10,7 @@ import { EntertainmentPageComponent } from './entertainment-page/component/enter
 import { GenericFormModule } from './generic-form/generic-form.module';
 import { FileUploaderModule } from './file-uploader/file-uploader.module';
 import { ButtonsModule } from './buttons/buttons.module';
+import { GenericTableListModule } from './generic-table-list/generic-table-list.module';
 
 
 
@@ -30,6 +31,7 @@ export const sharedComponents = [
     FileUploaderModule,
     FormsModule,
     GenericFormModule,
+    GenericTableListModule,
     MaterialModule,
     ReactiveFormsModule,
     SideMenuModule
@@ -40,6 +42,7 @@ export const sharedComponents = [
     FileUploaderModule,
     FormsModule,
     GenericFormModule,
+    GenericTableListModule,
     MaterialModule,
     ReactiveFormsModule,
     SideMenuModule

@@ -12,6 +12,7 @@ import { GenericFormMode } from 'src/app/shared/generic-form/enums/generic-form-
 import { IGenericFormActionButtonEvent } from 'src/app/shared/generic-form/models/generic-form-action-button.models';
 import { GenericFormConfigModel } from 'src/app/shared/generic-form/models/generic-form-config.model';
 import { GenericFormDataModel } from 'src/app/shared/generic-form/models/generic-form-data.models';
+import { GenericTableListConfig, GenericTableListType } from 'src/app/shared/generic-table-list/models/generic-table-list.models';
 import { BOOKS_FORM_CONFIG } from '../models/book-form.config';
 import { BookItemModel } from '../models/book-item.model';
 import { GetBooksRequest, InsertBookRequest } from '../models/books-request.models';
@@ -27,6 +28,11 @@ export class BooksComponent implements OnInit {
   public bookList: BookItemModel[];
   public formMode: GenericFormMode;
   public config: GenericFormConfigModel = BOOKS_FORM_CONFIG;
+  public tableConfig: GenericTableListConfig<BookItemModel> = {
+    mode: GenericTableListType.TABLE,
+    items: []
+  };
+  public isLoading: boolean = true;
   private userData: UserData;
 
   constructor(
@@ -75,8 +81,9 @@ export class BooksComponent implements OnInit {
   
           case GenericFormMode.DELETE:
           break;
-        }
-      }
+        };
+      };
+      this.getBooksList();
     })
   }
 
@@ -118,13 +125,18 @@ export class BooksComponent implements OnInit {
   }
 
   private getBooksList() {
+    this.isLoading = true;
+
     const getBooksRequest: GetBooksRequest = {
       user_id: this.userData.user_id
-    }
+    };
+
     this.booksService.getBooks(getBooksRequest)
       .subscribe(
         res => {
           this.bookList = res.items;
+          this.tableConfig.items = this.bookList;
+          this.isLoading = false;
           console.log('RES', res)
         }
       )
